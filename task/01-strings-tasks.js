@@ -201,7 +201,22 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    throw new Error('Not implemented');
+    const shape = {
+        leftTopCorner: '┌',
+        rightTopCorner: '┐',
+        leftBottomCorner: '└',
+        rightBottomCorner: '┘',
+        horizontalLine: '─',
+        verticalLine: '│',
+        lineBreak: '\n',
+        space: ' ',
+    };
+
+    let top = `${shape.leftTopCorner}${shape.horizontalLine.repeat(width - 2)}${shape.rightTopCorner}${shape.lineBreak}`;
+    let middle = `${shape.verticalLine}${shape.space.repeat(width - 2)}${shape.verticalLine}${shape.lineBreak}`;
+    let bottom = `${shape.leftBottomCorner}${shape.horizontalLine.repeat(width - 2)}${shape.rightBottomCorner}${shape.lineBreak}`;
+
+    return `${top}${middle.repeat(height - 2)}${bottom}`;
 }
 
 
