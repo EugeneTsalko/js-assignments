@@ -38,7 +38,7 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-   return Array.from({length: len}, (value, i) => 2 * i + 1);
+   return Array.from({length: len}, (_, i) => 2 * i + 1);
 }
 
 
@@ -200,7 +200,7 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-   return arr.reduce((acc, curr, i) => i !== arr.length - 1 ? acc + arr[i] + '\n' : acc + arr[arr.length - 1], '');
+   return arr.reduce((acc, _, i) => i !== arr.length - 1 ? acc + arr[i] + '\n' : acc + arr[arr.length - 1], '');
 }
 
 /**
@@ -252,7 +252,7 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-   return arr.filter((el, i) => i % 2 !== 0);
+   return arr.filter((_, i) => i % 2 !== 0);
 }
 
 
