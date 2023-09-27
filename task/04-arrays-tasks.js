@@ -289,7 +289,9 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   const sortedArr = arr.sort((a, b) => b - a);
+
+   return sortedArr.slice(0, 3);
 }
  
  
