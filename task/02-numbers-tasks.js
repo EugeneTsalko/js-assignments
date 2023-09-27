@@ -54,7 +54,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-    throw new Error('Not implemented');
+    return value1 / 2 + value2 / 2;
 }
 
 /**
@@ -228,7 +228,7 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
     const convertedValue = Number(value);
-    
+
     return !isNaN(convertedValue) ? convertedValue : def;
 }
 
