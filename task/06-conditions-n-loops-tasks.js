@@ -539,7 +539,48 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-  throw new Error("Not implemented");
+  const arr = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  const makeMoves = (arr) => {
+    const result = structuredClone(arr);
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (!result[i][j]) {
+          result[i][j] = null;
+        }
+      }
+    }
+    return result.flat();
+  };
+
+  const moves = makeMoves(position);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (
+      moves[arr[i][0]] === "X" &&
+      moves[arr[i][1]] === "X" &&
+      moves[arr[i][2]] === "X"
+    ) {
+      return "X";
+    } else if (
+      moves[arr[i][0]] === "0" &&
+      moves[arr[i][1]] === "0" &&
+      moves[arr[i][2]] === "0"
+    ) {
+      return "0";
+    }
+  }
+  return undefined;
 }
 
 module.exports = {
