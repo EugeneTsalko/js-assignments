@@ -221,7 +221,11 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    const start = isStartIncluded ? '[' : '(';
+    const end = isEndIncluded ? ']' : ')';
+    const nums = [a, b].sort((a, b) => a - b).join(', ');
+
+    return start + nums + end;
 }
 
 
