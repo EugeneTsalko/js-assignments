@@ -107,76 +107,32 @@ function fromJSON(proto, json) {
  */
 
 const cssSelectorBuilder = {
-  selector: "",
-
-  element(value) {
-    let obj = Object.create(cssSelectorBuilder);
-    obj.key = 1;
-    this.error(obj.key);
-    obj.selector = this.selector + value;
-    return obj;
+  element: function (value) {
+    throw new Error("Not implemented");
   },
 
-  id(value) {
-    let obj = Object.create(cssSelectorBuilder);
-    obj.key = 2;
-    this.error(obj.key);
-    obj.selector = this.selector + "#" + value;
-    return obj;
+  id: function (value) {
+    throw new Error("Not implemented");
   },
 
-  class(value) {
-    let obj = Object.create(cssSelectorBuilder);
-    obj.key = 3;
-    this.error(obj.key);
-    obj.selector = this.selector + "." + value;
-    return obj;
+  class: function (value) {
+    throw new Error("Not implemented");
   },
 
-  attr(value) {
-    let obj = Object.create(cssSelectorBuilder);
-    obj.key = 4;
-    this.error(obj.key);
-    obj.selector = this.selector + "[" + value + "]";
-    return obj;
+  attr: function (value) {
+    throw new Error("Not implemented");
   },
 
-  pseudoClass(value) {
-    let obj = Object.create(cssSelectorBuilder);
-    obj.key = 5;
-    this.error(obj.key);
-    obj.selector = this.selector + ":" + value;
-    return obj;
+  pseudoClass: function (value) {
+    throw new Error("Not implemented");
   },
 
-  pseudoElement(value) {
-    let obj = Object.create(cssSelectorBuilder);
-    obj.key = 6;
-    this.error(obj.key);
-    obj.selector = this.selector + "::" + value;
-    return obj;
+  pseudoElement: function (value) {
+    throw new Error("Not implemented");
   },
 
-  combine(selector1, combinator, selector2) {
-    let obj = Object.create(cssSelectorBuilder);
-    obj.selector =
-      selector1.selector + " " + combinator + " " + selector2.selector;
-    return obj;
-  },
-
-  stringify() {
-    return this.selector;
-  },
-
-  error(key) {
-    if (this.key > key)
-      throw new Error(
-        "Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element"
-      );
-    else if (this.key === key && [1, 2, 6].includes(key))
-      throw new Error(
-        "Element, id and pseudo-element should not occur more then one time inside the selector"
-      );
+  combine: function (selector1, combinator, selector2) {
+    throw new Error("Not implemented");
   },
 };
 
