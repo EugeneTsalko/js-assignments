@@ -584,21 +584,10 @@ function getElementByIndexes(arr, indexes) {
  */
 function swapHeadAndTail(arr) {
   const middle = (arr.length - 1) / 2;
-  let head = [];
-  let tail = [];
-  let result = [];
 
-  if (Number.isInteger(middle)) {
-    head = arr.slice(0, middle);
-    tail = arr.slice(middle + 1);
-    result = [...tail, arr[middle], ...head];
-  } else {
-    head = arr.slice(0, arr.length / 2);
-    tail = arr.slice(arr.length / 2);
-    result = [...tail, ...head];
-  }
-
-  return result;
+  return Number.isInteger(middle)
+    ? [...arr.slice(middle + 1), arr[middle], ...arr.slice(0, middle)]
+    : [...arr.slice(arr.length / 2), ...arr.slice(0, arr.length / 2)];
 }
 
 module.exports = {
