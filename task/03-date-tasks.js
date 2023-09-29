@@ -75,7 +75,7 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-  throw new Error("Not implemented");
+  return new Date(endDate - startDate).toISOString().slice(11, -1);
 }
 
 /**
