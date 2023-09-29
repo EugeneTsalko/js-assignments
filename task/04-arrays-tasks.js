@@ -524,7 +524,7 @@ function group(array, keySelector, valueSelector) {
   const map = new Map();
 
   array.map((el) => {
-    let key = keySelector(el);
+    const key = keySelector(el);
     map.has(key)
       ? map.get(key).push(valueSelector(el))
       : map.set(key, [valueSelector(el)]);
