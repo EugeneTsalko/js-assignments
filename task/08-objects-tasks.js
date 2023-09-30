@@ -110,7 +110,7 @@ const cssSelectorBuilder = {
   selector: "",
 
   element(value) {
-    let obj = Object.create(cssSelectorBuilder);
+    const obj = Object.create(cssSelectorBuilder);
     obj.key = 1;
     this.error(obj.key);
     obj.selector = this.selector + value;
@@ -118,7 +118,7 @@ const cssSelectorBuilder = {
   },
 
   id(value) {
-    let obj = Object.create(cssSelectorBuilder);
+    const obj = Object.create(cssSelectorBuilder);
     obj.key = 2;
     this.error(obj.key);
     obj.selector = this.selector + "#" + value;
@@ -126,7 +126,7 @@ const cssSelectorBuilder = {
   },
 
   class(value) {
-    let obj = Object.create(cssSelectorBuilder);
+    const obj = Object.create(cssSelectorBuilder);
     obj.key = 3;
     this.error(obj.key);
     obj.selector = this.selector + "." + value;
@@ -134,7 +134,7 @@ const cssSelectorBuilder = {
   },
 
   attr(value) {
-    let obj = Object.create(cssSelectorBuilder);
+    const obj = Object.create(cssSelectorBuilder);
     obj.key = 4;
     this.error(obj.key);
     obj.selector = this.selector + "[" + value + "]";
@@ -142,7 +142,7 @@ const cssSelectorBuilder = {
   },
 
   pseudoClass(value) {
-    let obj = Object.create(cssSelectorBuilder);
+    const obj = Object.create(cssSelectorBuilder);
     obj.key = 5;
     this.error(obj.key);
     obj.selector = this.selector + ":" + value;
@@ -150,7 +150,7 @@ const cssSelectorBuilder = {
   },
 
   pseudoElement(value) {
-    let obj = Object.create(cssSelectorBuilder);
+    const obj = Object.create(cssSelectorBuilder);
     obj.key = 6;
     this.error(obj.key);
     obj.selector = this.selector + "::" + value;
@@ -158,7 +158,7 @@ const cssSelectorBuilder = {
   },
 
   combine(selector1, combinator, selector2) {
-    let obj = Object.create(cssSelectorBuilder);
+    const obj = Object.create(cssSelectorBuilder);
     obj.selector =
       selector1.selector + " " + combinator + " " + selector2.selector;
     return obj;
