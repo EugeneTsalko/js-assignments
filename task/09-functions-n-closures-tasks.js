@@ -62,7 +62,14 @@ function getPowerFunction(exponent) {
  *   getPolynom()      => null
  */
 function getPolynom() {
-  throw new Error("Not implemented");
+  const args = Array.from(arguments).reverse();
+
+  return (x) => {
+    return args.reduce(
+      (prev, curr, index) => prev + curr * Math.pow(x, index),
+      0
+    );
+  };
 }
 
 /**
