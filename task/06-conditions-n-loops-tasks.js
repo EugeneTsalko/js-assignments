@@ -345,22 +345,19 @@ function getDigitalRoot(num) {
  */
 function isBracketsBalanced(str) {
   const pairs = { "(": ")", "{": "}", "[": "]", "<": ">" };
-  let stack = [];
-  let current;
+  const stack = [];
 
   for (let i = 0; i < str.length; i++) {
-    current = str[i];
+    const current = str[i];
 
     if (pairs[current]) {
       stack.push(current);
-    } else {
-      if (current !== pairs[stack.pop()]) {
-        return false;
-      }
+    } else if (current !== pairs[stack.pop()]) {
+      return false;
     }
   }
 
-  return stack.length === 0;
+  return !stack.length;
 }
 
 /**
