@@ -169,14 +169,15 @@ const cssSelectorBuilder = {
   },
 
   error(key) {
-    if (this.key > key)
+    if (this.key > key) {
       throw new Error(
         "Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element"
       );
-    else if (this.key === key && [1, 2, 6].includes(key))
+    } else if (this.key === key && [1, 2, 6].includes(key)) {
       throw new Error(
         "Element, id and pseudo-element should not occur more then one time inside the selector"
       );
+    }
   },
 };
 
