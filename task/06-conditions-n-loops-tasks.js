@@ -536,7 +536,7 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-  const arr = [
+  const winningPositions = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -562,17 +562,17 @@ function evaluateTicTacToePosition(position) {
 
   const moves = makeMoves(position);
 
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < winningPositions.length; i++) {
     if (
-      moves[arr[i][0]] === "X" &&
-      moves[arr[i][1]] === "X" &&
-      moves[arr[i][2]] === "X"
+      moves[winningPositions[i][0]] === "X" &&
+      moves[winningPositions[i][1]] === "X" &&
+      moves[winningPositions[i][2]] === "X"
     ) {
       return "X";
     } else if (
-      moves[arr[i][0]] === "0" &&
-      moves[arr[i][1]] === "0" &&
-      moves[arr[i][2]] === "0"
+      moves[winningPositions[i][0]] === "0" &&
+      moves[winningPositions[i][1]] === "0" &&
+      moves[winningPositions[i][2]] === "0"
     ) {
       return "0";
     }
