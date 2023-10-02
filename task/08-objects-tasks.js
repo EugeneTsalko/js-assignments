@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**************************************************************************************************
  *                                                                                                *
@@ -7,7 +7,6 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object        *
  *                                                                                                *
  **************************************************************************************************/
-
 
 /**
  * Returns the rectagle object with width and height parameters and getArea() method
@@ -23,9 +22,12 @@
  *    console.log(r.getArea());   // => 200
  */
 function Rectangle(width, height) {
-    throw new Error('Not implemented');
+  this.width = width;
+  this.height = height;
+  Rectangle.prototype.getArea = function () {
+    return this.width * this.height;
+  };
 }
-
 
 /**
  * Returns the JSON representation of specified object
@@ -38,9 +40,8 @@ function Rectangle(width, height) {
  *    { width: 10, height : 20 } => '{"height":10,"width":20}'
  */
 function getJSON(obj) {
-    throw new Error('Not implemented');
+  return JSON.stringify(obj);
 }
-
 
 /**
  * Returns the object of specified type from JSON representation
@@ -54,9 +55,8 @@ function getJSON(obj) {
  *
  */
 function fromJSON(proto, json) {
-    throw new Error('Not implemented');
+  return Object.setPrototypeOf(JSON.parse(json), proto);
 }
-
 
 /**
  * Css selectors builder
@@ -107,40 +107,83 @@ function fromJSON(proto, json) {
  */
 
 const cssSelectorBuilder = {
+  selector: "",
 
-    element: function(value) {
-        throw new Error('Not implemented');
-    },
+  element(value) {
+    const obj = Object.create(cssSelectorBuilder);
+    obj.key = 1;
+    this.error(obj.key);
+    obj.selector = this.selector + value;
+    return obj;
+  },
 
-    id: function(value) {
-        throw new Error('Not implemented');
-    },
+  id(value) {
+    const obj = Object.create(cssSelectorBuilder);
+    obj.key = 2;
+    this.error(obj.key);
+    obj.selector = this.selector + "#" + value;
+    return obj;
+  },
 
-    class: function(value) {
-        throw new Error('Not implemented');
-    },
+  class(value) {
+    const obj = Object.create(cssSelectorBuilder);
+    obj.key = 3;
+    this.error(obj.key);
+    obj.selector = this.selector + "." + value;
+    return obj;
+  },
 
-    attr: function(value) {
-        throw new Error('Not implemented');
-    },
+  attr(value) {
+    const obj = Object.create(cssSelectorBuilder);
+    obj.key = 4;
+    this.error(obj.key);
+    obj.selector = this.selector + "[" + value + "]";
+    return obj;
+  },
 
-    pseudoClass: function(value) {
-        throw new Error('Not implemented');
-    },
+  pseudoClass(value) {
+    const obj = Object.create(cssSelectorBuilder);
+    obj.key = 5;
+    this.error(obj.key);
+    obj.selector = this.selector + ":" + value;
+    return obj;
+  },
 
-    pseudoElement: function(value) {
-        throw new Error('Not implemented');
-    },
+  pseudoElement(value) {
+    const obj = Object.create(cssSelectorBuilder);
+    obj.key = 6;
+    this.error(obj.key);
+    obj.selector = this.selector + "::" + value;
+    return obj;
+  },
 
-    combine: function(selector1, combinator, selector2) {
-        throw new Error('Not implemented');
-    },
+  combine(selector1, combinator, selector2) {
+    const obj = Object.create(cssSelectorBuilder);
+    obj.selector =
+      selector1.selector + " " + combinator + " " + selector2.selector;
+    return obj;
+  },
+
+  stringify() {
+    return this.selector;
+  },
+
+  error(key) {
+    if (this.key > key) {
+      throw new Error(
+        "Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element"
+      );
+    } else if (this.key === key && [1, 2, 6].includes(key)) {
+      throw new Error(
+        "Element, id and pseudo-element should not occur more then one time inside the selector"
+      );
+    }
+  },
 };
 
-
 module.exports = {
-    Rectangle: Rectangle,
-    getJSON: getJSON,
-    fromJSON: fromJSON,
-    cssSelectorBuilder: cssSelectorBuilder
+  Rectangle: Rectangle,
+  getJSON: getJSON,
+  fromJSON: fromJSON,
+  cssSelectorBuilder: cssSelectorBuilder,
 };
