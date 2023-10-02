@@ -314,9 +314,9 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-  let result = String(num)
+  const result = String(num)
     .split("")
-    .map((el) => Number(el))
+    .map(Number)
     .reduce((acc, curr) => acc + curr, 0);
 
   return result < 10 ? result : getDigitalRoot(result);
