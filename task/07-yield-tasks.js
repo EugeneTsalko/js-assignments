@@ -59,8 +59,7 @@ function* getFibonacciSequence() {
   let current = 1;
   while (true) {
     const next = prev;
-    prev = current;
-    current = next + current;
+    [prev, current] = [current, next + current];
     yield next;
   }
 }
