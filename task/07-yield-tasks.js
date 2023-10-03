@@ -131,17 +131,14 @@ function* depthTraversalTree(root) {
  */
 function* breadthTraversalTree(root) {
   const arr = [root];
-  let index = 0;
 
-  while (arr.length !== index) {
-    root = arr[index];
+  for (let i = 0; i < arr.length; i++) {
+    root = arr[i];
     yield root;
 
     if (root.children) {
       arr.push(...root.children);
     }
-
-    index++;
   }
 }
 
