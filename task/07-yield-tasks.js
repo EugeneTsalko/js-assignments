@@ -130,7 +130,19 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
-  throw new Error("Not implemented");
+  const arr = [root];
+  let index = 0;
+
+  while (arr.length !== index) {
+    root = arr[index];
+    yield root;
+
+    if (root.children) {
+      arr.push(...root.children);
+    }
+
+    index++;
+  }
 }
 
 /**
